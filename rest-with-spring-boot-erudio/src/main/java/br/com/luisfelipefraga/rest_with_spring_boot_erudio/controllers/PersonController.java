@@ -1,6 +1,6 @@
 package br.com.luisfelipefraga.rest_with_spring_boot_erudio.controllers;
 
-import br.com.luisfelipefraga.rest_with_spring_boot_erudio.model.Person;
+import br.com.luisfelipefraga.rest_with_spring_boot_erudio.data.dto.PersonDTO;
 import br.com.luisfelipefraga.rest_with_spring_boot_erudio.services.PersonServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -27,14 +26,14 @@ public class PersonController {
     @GetMapping(
             produces = MediaType.APPLICATION_JSON_VALUE
     )
-    public List<Person> findAll() {
+    public List<PersonDTO> findAll() {
         return personServices.findAll();
     }
 
     @GetMapping(value = "/{id}",
             produces = MediaType.APPLICATION_JSON_VALUE
     )
-    public Person findById(@PathVariable("id") Long id) {
+    public PersonDTO findById(@PathVariable("id") Long id) {
         return personServices.findById(id);
     }
 
@@ -42,7 +41,7 @@ public class PersonController {
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE
     )
-    public Person create(@RequestBody Person person) {
+    public PersonDTO create(@RequestBody PersonDTO person) {
         return personServices.create(person);
     }
 
@@ -50,7 +49,7 @@ public class PersonController {
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE
     )
-    public Person update(@RequestBody Person person) {
+    public PersonDTO update(@RequestBody PersonDTO person) {
         return personServices.update(person);
     }
 
