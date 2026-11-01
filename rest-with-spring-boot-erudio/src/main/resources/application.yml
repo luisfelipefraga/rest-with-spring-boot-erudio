@@ -11,5 +11,10 @@ spring:
       ddl-auto: update
     properties:
       hibernate:
-        dialect: org.hibernate.dialect.MySQL8Dialect
     show-sql: false
+
+    open-in-view: false
+
+loggin:
+  level:
+    br.com.luisfelipefraga.rest_with_spring_boot_erudio: DEBUG
